@@ -7,17 +7,18 @@
 !.husky
 !.commitlintrc.json
 !.versionrc.json
-!.sass-cache/
-!.jekyll-cache/
-!.jekyll-metadata
-!.bundle/
 
 # bundler cache
 _site
 vendor
+.jekyll-cache
+.sass-cache
+.bundle
+.jekyll-metadata
 
 # rubygem
 *.gem
+Gemfile.lock
 
 # npm dependencies
 node_modules
