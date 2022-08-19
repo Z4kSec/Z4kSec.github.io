@@ -23,7 +23,7 @@ timezone:
 
 title: Zak's blog                          # the main title
 
-tagline: theme   # it will display as the sub-title
+tagline: Pentesting and RedTeaming stuff   # it will display as the sub-title
 
 description: >-                        # used by seo meta and the atom feed
   Zak Pentest Redteam hacking
@@ -83,7 +83,7 @@ theme_mode: # [light|dark]
 img_cdn:
 
 # the avatar on sidebar, support local or CORS resources
-avatar: /assets/img/avatar/ecto.jpg
+avatar: /assets/img/avatar.jpg
 
 # boolean type, the global switch for ToC in posts.
 toc: true
