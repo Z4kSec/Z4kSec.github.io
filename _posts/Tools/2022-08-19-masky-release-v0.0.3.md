@@ -87,7 +87,7 @@ This is once again a topic that would need tons of explaination to be fully cove
 
 ## Putting it all together
 
-We we now have all the elements in our hands! Based on all of these notions, I developed a tool called Masky that automates this process and works like Lsassy does. This tool is composed of a Python part running on the attacker's system and an executable agent in C# deployed on targeted systems.
+We now have all the elements in our hands! Based on all of these notions, I developed a tool called Masky that automates this process and works like Lsassy does. This tool is composed of a Python part running on the attacker's system and an executable agent in C# deployed on targeted systems.
 
 The following schema describes the implemented steps for a targeted host.
 
@@ -205,7 +205,7 @@ From this information, the following Windows event log IDs can be collected on y
 * `7045`: A new service was created;
 * `5145`: A network share object (file or folder) was accessed.
 
-The use of service or schedule tasks in a short period of time (e.g. creation / deletion) could be an interesting weak signal to correlate with administrative shares interactions (C$ / ADMIN$), as well as the IPC$ special share. Indeed, this could be a sign of the use of such lateral movement techniques. False positives can occur based on these rules depending on the administration tools used through the corporate LAN (e.g. PSEXEC). To go deeper in such detection, rules can be combined to identify the spawning of suspicious lolbins, unsigned binaries or commonly executed recognition commands (e.g. whoami, net user, etc.) from the process tree of the `schtasks.exe` (schedule tasks) or `winexesvc.exe` (services) processes.
+The use of service or schedule tasks in a short period of time (e.g. creation, modification or deletion) could be an interesting weak signal to correlate with administrative shares interactions (C$ / ADMIN$), as well as the IPC$ special share. Indeed, this could be a sign of the use of such lateral movement techniques. False positives can occur based on these rules depending on the administration tools used through the corporate LAN (e.g. PSEXEC). To go deeper in such detection, rules can be combined to identify the spawning of suspicious lolbins, unsigned binaries or commonly executed recognition commands (e.g. whoami, net user, etc.) from the process tree of the `schtasks.exe` (schedule tasks) or `winexesvc.exe` (services) processes.
 
 Once the lateral movement detection is monitored, the behaviors related to the locally deployed agent has to be handled.
 
