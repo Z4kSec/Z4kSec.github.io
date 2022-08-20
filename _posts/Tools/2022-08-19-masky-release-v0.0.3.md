@@ -2,10 +2,10 @@
 title: Masky release (v0.0.3)
 date: 2022-08-19 00:00:00
 categories: [Tools] 
-tags: [masky, adcs, tool, dump] 
+tags: [masky, adcs, tool, dump, AD, pentest, lsass, certificates] 
 ---
 
-Masky is a python library providing an alternative way to remotely dump domain users' credentials thanks to an ADCS. A command line tool has been built on top of this library in order to easily harvest PFX, NT hashes and TGT on a larger scope.
+[Masky](https://github.com/Z4kSec/Masky) is a python library providing an alternative way to remotely dump domain users' credentials thanks to an ADCS. A command line tool has been built on top of this library in order to easily harvest PFX, NT hashes and TGT on a larger scope.
 
 This tool does not exploit any new vulnerability and does not work by dumping the LSASS process memory. Indeed, it only takes advantage of legitimate Windows and Active Directory features (token impersonation, certificate authentication via kerberos and NT hashes retrieval via PKINIT). The aim of this blog post is to detail the implemented techniques and how Masky works.
 
@@ -61,7 +61,7 @@ Imagine that you are local administrator on a server with a domain administrator
 > While writting this article a [new release (4.0)](https://research.ifcr.dk/certipy-4-0-esc9-esc10-bloodhound-gui-new-authentication-and-request-methods-and-more-7237d88061f7) of Certipy was made by Ly4k. From lots of new interesting features, the SSPI option was implemented. This allow to use the current user context on a Windows system to take advantage of the other modules without knowing the current user credentials.
 {: .prompt-tip }
 
-This method relies on legit features and allows to compromise a domain user without touching LSASS on a stealthier way (take care of the Certipy binary detection). However, this technique was performed manually via an interactive session through RDP. This stay harder to be automated on a larger scope as the Lsassy / cme tools do through SMB and via the LSASS process dump.
+This method relies on legit features and allows to compromise a domain user without touching LSASS on a stealthier way (take care of the Certipy binary detection). However, this technique was performed manually via an interactive session through RDP. This stay harder to be automated on a larger scope as the Lsassy / CME tools do through SMB and via the LSASS process dump.
 
 <video  style="display:block; width:100%; height:auto;" autoplay controls loop="loop">
        <source src="/assets/video/demo_tscon.mp4" type="video/mp4" />
@@ -119,7 +119,7 @@ This overall process is replicated on each targeted system to store locally the 
 
 ## Masky for fun and profit
 
-Masky version 0.0.3 was released besides this article on my github: https://github.com/Z4kSec/Masky.
+Masky version 0.0.3 was released besides this article on my github: <https://github.com/Z4kSec/Masky>.
 
 > This version might be unstable and special care should be taken while using it to ensure that the RasAuto ImagePath has been correctly restored on the targeted system in case of an unexpected crash. This should not occured, but we never anticipate all behaviors! ;)
 {: .prompt-warning }
