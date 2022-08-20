@@ -99,7 +99,7 @@ The following schema describes the implemented steps for a targeted host.
 
 First, the attacker must own a user with local admin privileges on the targeted systems. Masky supports plaintext password, LM-NT hashes or Kerberos authentication with a loaded CCACHE. In case of the exposure of the tcp port 445, an SMB connection is established.
 
-This SMB session allows to push a Masky agent executable into the Windows Temp folder. Once successfuly pushed via the `C$` remote share, the `ImagePath` attribute related to the existing `RasAuto` service is modified to point on the Masky agent. I chose this method as it is stealthiest to modify an existing service property rather than created a new one that will be deleted later. This remote code execution method was [implemented by Pixis in Lsassy](https://github.com/Hackndo/LSASSy/blob/master/LSASSy/exec/smb_stealth.py) based on the [@Cyb3rSn0rlax](https://twitter.com/Cyb3rSn0rlax) idea. The `RasAuto` service was chosen because it is started manually and is deployed by default from older Windows versions to newer ones.
+This SMB session allows to push a Masky agent executable into the Windows Temp folder. Once successfuly pushed via the `C$` remote share, the `ImagePath` attribute related to the existing `RasAuto` service is modified to point on the Masky agent. I chose this method as it is stealthiest to modify an existing service property rather than created a new one that will be deleted later. This remote code execution method was [implemented by Pixis in Lsassy](https://github.com/Hackndo/lsassy/blob/master/lsassy/exec/smb_stealth.py) based on the [@Cyb3rSn0rlax](https://twitter.com/Cyb3rSn0rlax) idea. The `RasAuto` service was chosen because it is started manually and is deployed by default from older Windows versions to newer ones.
 
 Finally, the modified service is started via the DCERPC Impacket implementation (SCMR) and the Masky agent is launched with `NT AUTHORITY/SYSTEM` privileges. 
 
@@ -243,7 +243,7 @@ A [CrackMapExec](https://github.com/Porchetta-Industries/CrackMapExec) module co
 - [Will Schroeder](https://twitter.com/harmj0y) and [Lee Christensen](https://twitter.com/tifkin_) for the [Certify](https://github.com/GhostPack/Certify) tool and the [Certified Pre-Owned](https://www.specterops.io/assets/resources/Certified_Pre-Owned.pdf) article
 - [Dirk-jan](https://twitter.com/_dirkjan) for the [PKINITtools](https://github.com/dirkjanm/PKINITtools) and its [ADCS NTLM relay](https://dirkjanm.io/ntlm-relaying-to-ad-certificate-services/) article
 - [SecureAuthCorp](https://github.com/SecureAuthCorp) and the associated contributors for the [Impacket](https://github.com/SecureAuthCorp/impacket) library
-- [Pixis](https://github.com/Hackndo/LSASSy) for the tool [LSASSy](https://github.com/Hackndo/LSASSy)
+- [Pixis](https://twitter.com/HackAndDo) for the tool [Lsassy](https://github.com/Hackndo/Lsassy)
 - Incognito tool and its [Metasploit implementation](https://github.com/rapid7/metasploit-payloads/blob/master/c/meterpreter/source/extensions/incognito/)
 - [S3cur3Th1sSh1t](https://twitter.com/ShitSecure) for the tool [SharpImpersonation](https://github.com/S3cur3Th1sSh1t/SharpImpersonation) and the [associated article](https://s3cur3th1ssh1t.github.io/SharpImpersonation-Introduction/)
 - McAfee for their article regarding the [token impersonation techniques](https://www.mcafee.com/enterprise/en-us/assets/reports/rp-access-token-theft-manipulation-attacks.pdf)
